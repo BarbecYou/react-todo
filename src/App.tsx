@@ -1,17 +1,26 @@
 import { useState } from 'react'
 
 // custom components
-import CustomForm from './assets/components/CustomForm'
+import CustomForm from './components/CustomForm'
+
+export interface Task {
+  name: string,
+  isChecked: boolean,
+  id: number,
+}
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [tasks, setTasks] = useState<Task[]>([])
+
+
 
   return (
     <div className="container">
       <header>
         <h1>my task list</h1>
       </header>
-      <CustomForm />
+      <CustomForm setTasks={setTasks} />
     </div>
   )
 }

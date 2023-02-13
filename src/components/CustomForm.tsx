@@ -1,14 +1,21 @@
 import { FormEvent, useState } from "react";
+import { Task } from '../App';
 
-// custom icons
+// library imports
 import { PlusCircleIcon } from '@heroicons/react/24/solid';
 
-const CustomForm = () => {
+const CustomForm = (props: { setTasks: (tasks: Task[]) => void }) => {
     const [task, setTask] = useState("");
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault;
-        console.log(e);
+        const newTask: Task = {
+            id: Date.now(),
+            isChecked: false,
+            name: task
+        }
+        props.setTasks(current => [...current, newTask]);
+        setTask("");
     }
 
     return (
@@ -25,7 +32,7 @@ const CustomForm = () => {
                     id="taskInput"
                     className="input"
                     value={task}
-                    onInput={(e: FormEvent<HTMLInputElement>) => { setTask((e.target as HTMLInputElement).value) }}
+                    onChange={e => setTask(e.target.value)}
                     required
                     autoFocus
                     maxLength={60}
