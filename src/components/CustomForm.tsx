@@ -8,14 +8,15 @@ const CustomForm = (props: { setTasks: (tasks: Task[]) => void }) => {
     const [task, setTask] = useState("");
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault;
+        e.preventDefault();
         const newTask: Task = {
             id: Date.now(),
             isChecked: false,
             name: task
         }
-        props.setTasks(current => [...current, newTask]);
+        props.setTasks([newTask]);
         setTask("");
+        console.log(newTask)
     }
 
     return (

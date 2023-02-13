@@ -9,11 +9,8 @@ export interface Task {
   id: number,
 }
 
-
 function App() {
   const [tasks, setTasks] = useState<Task[]>([])
-
-
 
   return (
     <div className="container">
