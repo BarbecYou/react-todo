@@ -2,7 +2,7 @@ import { FormEvent, useState } from "react";
 import { Task } from '../App';
 
 // library imports
-import { PlusCircleIcon } from '@heroicons/react/24/solid';
+import { PlusCircleIcon } from '@heroicons/react/24/outline';
 import TaskList from "./TaskList";
 
 const CustomForm = (props: { tasks: Task[], setTasks: (tasks: Task[]) => void }) => {

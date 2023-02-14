@@ -18,31 +18,47 @@ body {
 
 .form {
     margin-top: 50px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: center;
+    font-size: 20px;
 }
 
 .formGrid {
-    padding: 5px;
-    width: fit-content;
-    background-color: yellow;
+    padding: 10px;
+    height: fit-content;
+    background-color: darkmagenta;
+    color: white;
+    box-shadow: 0px 0px 5px darkviolet;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    grid-row-gap: 10px;
+    grid-row-gap: 5px;
     grid-column-gap: 5px;
+    justify-content: center;
+}
+
+.formGrid>input {
+    padding: 2px;
+    font-size: 1.2rem;
 }
 
 .formGrid>*:nth-child(3) {
     grid-row: 2;
     grid-column: 1 / span 2;
+    height: 40px;
 }
 
 #submitBtn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
     justify-self: end;
+    height: fit-content;
+    width: fit-content;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+#submitBtn>* {
+    height: 35px;
+    color: white;
 }

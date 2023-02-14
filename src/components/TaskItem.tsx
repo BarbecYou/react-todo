@@ -8,7 +8,7 @@ const TaskItem = (props: { task: Task, deleteTask: (id: number) => void }) => {
     const [isChecked, setIsChecked] = useState(props.task.isChecked);
     return (
         <li className={styles.task}>
-            <div>
+            <div className={styles['task-group']}>
                 <input
                     type="checkbox"
                     checked={isChecked}
@@ -19,12 +19,15 @@ const TaskItem = (props: { task: Task, deleteTask: (id: number) => void }) => {
                 <label htmlFor={props.task.id.toString()}>
                     {props.task.name}
                 </label>
-                <button>
-                    szerkesztés
+            </div>
+            <div className={styles['task-group']}>
+                <button className={styles.button}>
+                    edit
                 </button>
                 <button
+                    className={styles.button}
                     onClick={() => props.deleteTask(props.task.id)}>
-                    törlés
+                    delete
                 </button>
             </div>
         </li>
