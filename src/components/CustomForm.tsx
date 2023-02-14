@@ -3,8 +3,9 @@ import { Task } from '../App';
 
 // library imports
 import { PlusCircleIcon } from '@heroicons/react/24/solid';
+import TaskList from "./TaskList";
 
-const CustomForm = (props: { setTasks: (tasks: Task[]) => void }) => {
+const CustomForm = (props: { tasks: Task[], setTasks: (tasks: Task[]) => void }) => {
     const [task, setTask] = useState("");
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -14,9 +15,8 @@ const CustomForm = (props: { setTasks: (tasks: Task[]) => void }) => {
             isChecked: false,
             name: task
         }
-        props.setTasks([newTask]);
+        props.setTasks([...props.tasks, newTask]);
         setTask("");
-        console.log(newTask)
     }
 
     return (
