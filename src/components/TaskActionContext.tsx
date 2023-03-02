@@ -27,12 +27,12 @@ export const TaskContext = React.createContext<TasksContextType>({
 });
 
 export const TaskProvider = ({ children }: PropsWithChildren) => {
-
     const [tasks, setTasks] = useState<Task[]>([])
     const [completedTasks, setCompletedTasks] = useState<Task[]>([])
 
     const addTask = (newTask: Task) => {
         setTasks([...tasks, newTask]);
+        console.log(1)
     }
 
     const completeTask = (id: number) => {

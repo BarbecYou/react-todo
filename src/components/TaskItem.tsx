@@ -1,14 +1,16 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 
 // custom types and components
 import { Task, TaskContext } from './TaskActionContext';
 import styles from './TaskItem.module.css';
 
-const TaskItem = (props: { task: Task }) => {
+const TaskItem = (props: { key: number, task: Task }) => {
+    const ref = useRef<HTMLInputElement>(null);
     const { updateTask, completeTask, uncompleteTask, deleteTask } = useContext(TaskContext);
 
     const handleNameChange = () => {
-        const inputField = (document.querySelector('#taskNameField') as HTMLInputElement);
+        const inputField = ref.current!;
+        console.log(inputField);
         inputField.disabled = !inputField.disabled;
         updateTask(props.task.id, inputField.value);
     }
@@ -29,7 +31,7 @@ const TaskItem = (props: { task: Task }) => {
                         }
                     }}
                 />
-                <input disabled id="taskNameField" type="text" defaultValue={props.task.name} onKeyDown={(event) => {
+                <input ref={ref} disabled id="taskNameField" type="text" defaultValue={props.task.name} onKeyDown={(event) => {
                     if (event.key === 'Enter') {
                         handleNameChange();
                     }

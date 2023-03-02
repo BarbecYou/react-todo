@@ -2,7 +2,6 @@ import { FormEvent, useContext, useState } from "react";
 
 // library imports
 import { PlusCircleIcon } from '@heroicons/react/24/outline';
-import TaskList from "./TaskList";
 import { Task, TaskContext } from "./TaskActionContext";
 
 const CustomForm = () => {
@@ -12,7 +11,7 @@ const CustomForm = () => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const newTask: Task = {
-            id: Date.now(),
+            id: Date.now() + Math.random() * 10 + 5,
             isChecked: false,
             name: task
         }
