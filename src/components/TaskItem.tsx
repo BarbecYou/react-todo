@@ -1,32 +1,48 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 
 // custom types and components
-import { Task } from '../App';
+import { Task, TaskContext } from './TaskActionContext';
 import styles from './TaskItem.module.css';
 
-const TaskItem = (props: { task: Task, deleteTask: (id: number) => void }) => {
-    const [isChecked, setIsChecked] = useState(props.task.isChecked);
+const TaskItem = (props: { task: Task }) => {
+    const { updateTask, completeTask, uncompleteTask, deleteTask } = useContext(TaskContext);
+
+    const handleNameChange = () => {
+        const inputField = (document.querySelector('#taskNameField') as HTMLInputElement);
+        inputField.disabled = !inputField.disabled;
+        updateTask(props.task.id, inputField.value);
+    }
+
     return (
         <li className={styles.task}>
             <div className={styles['task-group']}>
                 <input
                     type="checkbox"
-                    checked={isChecked}
+                    checked={props.task.isChecked}
                     name={props.task.name}
                     id={props.task.id.toString()}
-                    onChange={() => setIsChecked(!isChecked)}
+                    onChange={() => {
+                        if (props.task.isChecked) {
+                            uncompleteTask(props.task.id)
+                        } else {
+                            completeTask(props.task.id)
+                        }
+                    }}
                 />
-                <label htmlFor={props.task.id.toString()}>
-                    {props.task.name}
-                </label>
+                <input disabled id="taskNameField" type="text" defaultValue={props.task.name} onKeyDown={(event) => {
+                    if (event.key === 'Enter') {
+                        handleNameChange();
+                    }
+                }}>
+                </input>
             </div>
             <div className={styles['task-group']}>
-                <button className={styles.button}>
+                <button className={styles.button} onClick={handleNameChange} >
                     edit
                 </button>
                 <button
                     className={styles.button}
-                    onClick={() => props.deleteTask(props.task.id)}>
+                    onClick={() => deleteTask(props.task.id)}>
                     delete
                 </button>
             </div>

@@ -1,20 +1,20 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { TaskContext } from './TaskActionContext';
 
 // custom types and components
-import { Task } from '../App';
 import TaskItem from './TaskItem';
 import styles from './TaskList.module.css'
 
-const TaskList = (props: { tasks: Task[], deleteTask: (id: number) => void }) => {
+const TaskList = () => {
+    const { tasks } = useContext(TaskContext);
 
     return (
         <ul className={styles.tasks}>
             {
-                props.tasks.sort((a, b) => b.id - a.id).map(task => (
+                tasks.sort((a, b) => b.id - a.id).map(task => (
                     <TaskItem
                         key={task.id}
                         task={task}
-                        deleteTask={props.deleteTask}
                     />
                 ))
             }
