@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react'
+import { useContext, useRef } from 'react'
 
 // custom types and components
 import { Task, TaskContext } from './TaskActionContext';

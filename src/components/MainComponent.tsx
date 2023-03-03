@@ -1,10 +1,7 @@
-import { useContext } from "react";
 import CustomForm from "./CustomForm";
-import { TaskContext } from "./TaskActionContext";
 import TaskList from "./TaskList";
 
 const MainComponent = () => {
-    //const { tasks } = useContext(TaskContext);
 
     return (
         <div className="mainContainer">
