@@ -6,7 +6,7 @@ import styles from './TaskItem.module.css';
 
 const TaskItem = (props: { key: number, task: Task }) => {
     const ref = useRef<HTMLInputElement>(null);
-    const { updateTask, completeTask, uncompleteTask, deleteTask } = useContext(TaskContext);
+    const { updateTask, completeTask, deleteTask } = useContext(TaskContext);
 
     const handleNameChange = () => {
         const inputField = ref.current!;
@@ -24,11 +24,7 @@ const TaskItem = (props: { key: number, task: Task }) => {
                     name={props.task.name}
                     id={props.task.id.toString()}
                     onChange={() => {
-                        if (props.task.isChecked) {
-                            uncompleteTask(props.task.id)
-                        } else {
-                            completeTask(props.task.id)
-                        }
+                        completeTask(props.task.id)
                     }}
                 />
                 <input ref={ref} disabled id="taskNameField" type="text" defaultValue={props.task.name} onKeyDown={(event) => {

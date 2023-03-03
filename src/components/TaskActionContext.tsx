@@ -8,31 +8,25 @@ export interface Task {
 
 type TasksContextType = {
     tasks: Task[];
-    completedTasks: Task[];
     addTask: (newTask: Task) => void;
     completeTask: (id: number) => void;
-    uncompleteTask: (id: number) => void;
     deleteTask: (id: number) => void;
     updateTask: (id: number, newName: string) => void;
 };
 
 export const TaskContext = React.createContext<TasksContextType>({
     tasks: [],
-    completedTasks: [],
     addTask: () => { },
     completeTask: () => { },
-    uncompleteTask: () => { },
     deleteTask: () => { },
     updateTask: () => { },
 });
 
 export const TaskProvider = ({ children }: PropsWithChildren) => {
     const [tasks, setTasks] = useState<Task[]>([])
-    const [completedTasks, setCompletedTasks] = useState<Task[]>([])
 
     const addTask = (newTask: Task) => {
         setTasks([...tasks, newTask]);
-        console.log(1)
     }
 
     const completeTask = (id: number) => {
@@ -41,18 +35,7 @@ export const TaskProvider = ({ children }: PropsWithChildren) => {
         checkedTask = {
             ...checkedTask,
             id: Date.now(),
-            isChecked: true
-        }
-        setCompletedTasks(prev => [...prev, checkedTask])
-    }
-
-    const uncompleteTask = (id: number) => {
-        let checkedTask = completedTasks.find(t => t.id === id)!;
-        setCompletedTasks(completedTasks.filter(t => t.id != id))
-        checkedTask = {
-            ...checkedTask,
-            id: Date.now(),
-            isChecked: false
+            isChecked: !checkedTask.isChecked
         }
         setTasks(prev => [...prev, checkedTask])
     }
@@ -67,10 +50,8 @@ export const TaskProvider = ({ children }: PropsWithChildren) => {
 
     const value = {
         tasks,
-        completedTasks,
         addTask,
         completeTask,
-        uncompleteTask,
         updateTask,
         deleteTask
     }

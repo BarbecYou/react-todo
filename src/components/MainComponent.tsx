@@ -4,7 +4,7 @@ import { TaskContext } from "./TaskActionContext";
 import TaskList from "./TaskList";
 
 const MainComponent = () => {
-    const { tasks, completedTasks } = useContext(TaskContext);
+    //const { tasks } = useContext(TaskContext);
 
     return (
         <div className="mainContainer">
@@ -15,13 +15,12 @@ const MainComponent = () => {
                     <h1>my task list</h1>
                 </header>
                 <CustomForm />
-                {tasks.length == 0 && <p>You have no tasks to do!</p>}
-                {tasks && <TaskList tasks={tasks} />}
+                <TaskList isCompletedList={false} />
             </div>
 
             {/* grid column for completed todos*/}
             <div className='container'>
-                <TaskList tasks={completedTasks} />
+                <TaskList isCompletedList={true} />
             </div>
         </div>
     )
