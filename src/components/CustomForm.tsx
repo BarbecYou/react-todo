@@ -2,7 +2,7 @@ import { FormEvent, useContext, useState } from "react";
 
 // library imports
 import { PlusCircleIcon } from '@heroicons/react/24/outline';
-import { Task, TaskContext } from "./TaskActionContext";
+import { Task, TaskContext } from "./TaskContext";
 
 const CustomForm = () => {
     const { addTask } = useContext(TaskContext);

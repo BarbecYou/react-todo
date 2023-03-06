@@ -1,7 +1,7 @@
 import { useContext, useRef } from 'react'
 
 // custom types and components
-import { Task, TaskContext } from './TaskActionContext';
+import { Task, TaskContext } from './TaskContext';
 import styles from './TaskItem.module.css';
 
 const TaskItem = (props: { key: number, task: Task }) => {

@@ -8,15 +8,14 @@ const MainComponent = () => {
 
             { /* grid column for active todos */}
             <div className="container">
-                <header>
-                    <h1>my task list</h1>
-                </header>
+                <h1>my task list</h1>
                 <CustomForm />
                 <TaskList isCompletedList={false} />
             </div>
 
             {/* grid column for completed todos*/}
             <div className='container'>
+                <h1>completed tasks</h1>
                 <TaskList isCompletedList={true} />
             </div>
         </div>

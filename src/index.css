@@ -11,19 +11,31 @@
 .mainContainer {
     font-family: 'Source Sans Pro', sans-serif;
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 1fr 1fr;
     justify-items: center;
-    background-color: red;
+    background-color: #1A1A1D;
 }
 
 .container {
-    text-align: center;
-    border: 1px solid black;
-    background-color: yellow;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* row-gap: 10px; */
+    background-color: #1A1A1D;
+    align-items: center;
+    justify-content: baseline;
+}
+
+.container h1 {
+    height: fit-content;
+    width: fit-content;
+    color: #C3073F;
+    font-size: 2em;
+    margin-top: 10px;
 }
 
 .form {
-    margin-top: 50px;
+    margin-top: 40px;
     margin-bottom: 20px;
     display: flex;
     justify-content: center;
@@ -33,9 +45,9 @@
 .formGrid {
     padding: 10px;
     height: fit-content;
-    background-color: darkmagenta;
+    background-color: #4E4E50;
     color: white;
-    box-shadow: 0px 0px 5px darkviolet;
+    box-shadow: 0px 0px 5px #950740;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
@@ -47,6 +59,7 @@
 .formGrid>input {
     padding: 2px;
     font-size: 1.2rem;
+    color: #950740;
 }
 
 .formGrid>*:nth-child(3) {
@@ -67,4 +80,47 @@
 #submitBtn>* {
     height: 35px;
     color: white;
+}
+
+.noTasksP {
+    color: #4E4E50;
+}
+
+.tasks {
+    display: grid;
+    list-style-type: none;
+    gap: 10px;
+    justify-content: center;
+}
+
+.task {
+    /* display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 5px;  */
+    border: 1px solid black;
+    padding: 5px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    font-size: 20px;
+}
+
+.task-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+.button {
+    padding: 4px;
+    border: 1px solid black;
+    background-color: transparent;
+    border-radius: 3px;
 }
