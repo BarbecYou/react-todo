@@ -2,7 +2,6 @@ import { useContext, useRef } from 'react'
 
 // custom types and components
 import { Task, TaskContext } from './TaskContext';
-import styles from './TaskItem.module.css';
 
 const TaskItem = (props: { key: number, task: Task }) => {
     const ref = useRef<HTMLInputElement>(null);
@@ -16,8 +15,8 @@ const TaskItem = (props: { key: number, task: Task }) => {
     }
 
     return (
-        <li className={styles.task}>
-            <div className={styles['task-group']}>
+        <li className='task'>
+            <div className='task-group'>
                 <input
                     type="checkbox"
                     checked={props.task.isChecked}
@@ -34,12 +33,12 @@ const TaskItem = (props: { key: number, task: Task }) => {
                 }}>
                 </input>
             </div>
-            <div className={styles['task-group']}>
-                <button className={styles.button} onClick={handleNameChange} >
+            <div className='task-group'>
+                <button className='button' onClick={handleNameChange} >
                     edit
                 </button>
                 <button
-                    className={styles.button}
+                    className='button'
                     onClick={() => deleteTask(props.task.id)}>
                     delete
                 </button>
