@@ -1,7 +1,8 @@
 import { useContext, useRef } from 'react'
 
 // custom types and components
-import { Task, TaskContext } from './TaskContext';
+import { Task, TaskContext } from '../contexts/TaskContext';
+import style from "../styles/TaskItem.module.css";
 
 const TaskItem = (props: { key: number, task: Task }) => {
     const ref = useRef<HTMLInputElement>(null);
@@ -9,14 +10,13 @@ const TaskItem = (props: { key: number, task: Task }) => {
 
     const handleNameChange = () => {
         const inputField = ref.current!;
-        console.log(inputField);
         inputField.disabled = !inputField.disabled;
         updateTask(props.task.id, inputField.value);
     }
 
     return (
-        <li className='task'>
-            <div className='task-group'>
+        <li className={style.tasksss}>
+            <div className={style.taskGroup}>
                 <input
                     type="checkbox"
                     checked={props.task.isChecked}
@@ -33,12 +33,12 @@ const TaskItem = (props: { key: number, task: Task }) => {
                 }}>
                 </input>
             </div>
-            <div className='task-group'>
-                <button className='button' onClick={handleNameChange} >
+            <div className={style.taskGroup}>
+                <button className={style.buttonDark} onClick={handleNameChange} >
                     edit
                 </button>
                 <button
-                    className='button'
+                    className={style.buttonDark}
                     onClick={() => deleteTask(props.task.id)}>
                     delete
                 </button>

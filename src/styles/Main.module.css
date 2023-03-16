@@ -1,0 +1,24 @@
+.mainContainer {
+    font-family: 'Source Sans Pro', sans-serif;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #1A1A1D;
+    align-items: center;
+    justify-content: baseline;
+    gap: 30px;
+}
+
+.container h1 {
+    height: fit-content;
+    width: fit-content;
+    color: var(--contrast-color);
+    font-size: 2em;
+    margin-top: 10px;
+}

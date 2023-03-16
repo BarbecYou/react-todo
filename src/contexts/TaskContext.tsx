@@ -19,7 +19,7 @@ export const TaskContext = React.createContext<TasksContextType>({
     addTask: () => { },
     completeTask: () => { },
     deleteTask: () => { },
-    updateTask: () => { },
+    updateTask: () => { }
 });
 
 export const TaskProvider = ({ children }: PropsWithChildren) => {

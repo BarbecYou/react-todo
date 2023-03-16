@@ -2,7 +2,8 @@ import { FormEvent, useContext, useState } from "react";
 
 // library imports
 import { PlusCircleIcon } from '@heroicons/react/24/outline';
-import { Task, TaskContext } from "./TaskContext";
+import { Task, TaskContext } from "../contexts/TaskContext";
+import style from "../styles/AddTaskForm.module.css"
 
 const CustomForm = () => {
     const { addTask } = useContext(TaskContext);
@@ -21,16 +22,16 @@ const CustomForm = () => {
 
     return (
         <form
-            className="form"
+            className={style.form}
             onSubmit={handleSubmit}>
-            <div className="formGrid">
+            <div className={style.formGrid}>
                 <label htmlFor="taskInput">enter task</label>
-                <button type="submit" id="submitBtn">
+                <button type="submit" id={style.submitBtn}>
                     <PlusCircleIcon />
                 </button>
                 <input
                     type="text"
-                    id="taskInput"
+                    id={style.taskInput}
                     className="input"
                     value={task}
                     onChange={e => setTask(e.target.value)}
