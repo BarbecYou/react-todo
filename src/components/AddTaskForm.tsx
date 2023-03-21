@@ -4,9 +4,11 @@ import { FormEvent, useContext, useState } from "react";
 import { PlusCircleIcon } from '@heroicons/react/24/outline';
 import { Task, TaskContext } from "../contexts/TaskContext";
 import style from "../styles/AddTaskForm.module.css"
+import { ThemeContext } from "../contexts/ThemeContext";
 
 const CustomForm = () => {
     const { addTask } = useContext(TaskContext);
+    const { theme } = useContext(ThemeContext);
     const [task, setTask] = useState("");
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -24,7 +26,7 @@ const CustomForm = () => {
         <form
             className={style.form}
             onSubmit={handleSubmit}>
-            <div className={style.formGrid}>
+            <div className={`${style['formGrid']} ${style[`formGrid-${theme}`]}`}>
                 <label htmlFor="taskInput">enter task</label>
                 <button type="submit" id={style.submitBtn}>
                     <PlusCircleIcon />

@@ -13,7 +13,9 @@ const MainComponent = () => {
 
     return (
         <>
-            <button onClick={changeTheme}>{theme === 'dark' ? 'Ligth mode' : 'Dark mode'}</button>
+            <div className={style["themeButtonContainer"]}>
+                <button className={style[`themeButton-${theme}`]} onClick={changeTheme}>{theme === 'dark' ? 'Ligth mode' : 'Dark mode'}</button>
+            </div>
             <div className={style.mainContainer}>
 
                 { /* grid column for active todos */}

@@ -5,6 +5,10 @@
     justify-content: center;
 }
 
-.noTasksP {
+.noTasksP-light {
+    color: black;
+}
+
+.noTasksP-dark {
     color: #4E4E50;
 }

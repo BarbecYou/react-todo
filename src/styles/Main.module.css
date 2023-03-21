@@ -1,5 +1,4 @@
 .mainContainer {
-    font-family: 'Source Sans Pro', sans-serif;
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-items: center;
@@ -9,7 +8,6 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    background-color: #1A1A1D;
     align-items: center;
     justify-content: baseline;
     gap: 30px;
@@ -21,4 +19,24 @@
     color: var(--contrast-color);
     font-size: 2em;
     margin-top: 10px;
+}
+
+.themeButtonContainer {
+    position: fixed;
+    border: 2px solid var(--contrast-color);
+    border-radius: 2px;
+}
+
+.themeButton-light {
+    border: none;
+    padding: 5px;
+    background-color: var(--light-mode-color);
+    color: black;
+}
+
+.themeButton-dark {
+    border: none;
+    padding: 5px;
+    background-color: var(--light-dark-color);
+    color: var(--light-mode-color)
 }

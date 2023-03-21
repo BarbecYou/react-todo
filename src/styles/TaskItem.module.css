@@ -1,4 +1,4 @@
-.task {
+.task-light {
     border: 2px solid #4E4E50;
     padding: 5px;
     border-radius: 3px;
@@ -9,8 +9,8 @@
 }
 
 .task-dark {
-    /* composes: task; */
-    border: 2px solid red;
+    composes: task-light;
+    border-color: var(--contrast-color-dark);
 }
 
 .task-group {
@@ -20,14 +20,20 @@
     gap: 5px;
 }
 
-.task-group>input {
+.input-light {
     color: black;
-    background-color: #4E4E50;
-    border: 1px solid white;
+    background-color: white;
+    border: 1px solid black;
     padding: 2px;
 }
 
-.button {
+.input-dark {
+    composes: input-light;
+    background-color: white;
+    border-color: black;
+}
+
+.button-light {
     padding: 4px;
     border: 1px solid white;
     background-color: transparent;
@@ -36,9 +42,6 @@
 }
 
 .button-dark {
-    padding: 4px;
-    border: 1px solid black;
-    background-color: transparent;
-    color: #C3073F;
-    border-radius: 3px;
+    composes: button-light;
+    border-color: black;
 }

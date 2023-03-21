@@ -2,11 +2,13 @@ import { useContext, useRef } from 'react'
 
 // custom types and components
 import { Task, TaskContext } from '../contexts/TaskContext';
+import { ThemeContext } from '../contexts/ThemeContext';
 import style from "../styles/TaskItem.module.css";
 
 const TaskItem = (props: { key: number, task: Task }) => {
     const ref = useRef<HTMLInputElement>(null);
     const { updateTask, completeTask, deleteTask } = useContext(TaskContext);
+    const { theme } = useContext(ThemeContext);
 
     const handleNameChange = () => {
         const inputField = ref.current!;
@@ -15,7 +17,7 @@ const TaskItem = (props: { key: number, task: Task }) => {
     }
 
     return (
-        <li className={style.tasksss}>
+        <li className={style[`task-${theme}`]}>
             <div className={style.taskGroup}>
                 <input
                     type="checkbox"
@@ -26,7 +28,7 @@ const TaskItem = (props: { key: number, task: Task }) => {
                         completeTask(props.task.id)
                     }}
                 />
-                <input ref={ref} disabled id="taskNameField" type="text" defaultValue={props.task.name} onKeyDown={(event) => {
+                <input className={style[`input-${theme}`]} ref={ref} disabled id="taskNameField" type="text" defaultValue={props.task.name} onKeyDown={(event) => {
                     if (event.key === 'Enter') {
                         handleNameChange();
                     }
@@ -34,11 +36,11 @@ const TaskItem = (props: { key: number, task: Task }) => {
                 </input>
             </div>
             <div className={style.taskGroup}>
-                <button className={style.buttonDark} onClick={handleNameChange} >
+                <button className={style[`button-${theme}`]} onClick={handleNameChange} >
                     edit
                 </button>
                 <button
-                    className={style.buttonDark}
+                    className={style[`button-${theme}`]}
                     onClick={() => deleteTask(props.task.id)}>
                     delete
                 </button>
